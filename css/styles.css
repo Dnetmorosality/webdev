@@ -45,6 +45,12 @@ body {
     max-width: 100%;
 }
 
+.about__text {
+    margin-bottom: 1rem;
+    max-width: 800px;
+    text-indent: 1.5em;
+}
+
 .about__title,
 .products__title,
 .contact__title {
@@ -53,10 +59,7 @@ body {
     text-transform: uppercase;
 }
 
-.about__text {
-    margin-bottom: 1rem;
-    max-width: 800px;
-}
+
 
 .products__list {
     display: flex;
@@ -66,11 +69,12 @@ body {
 }
 
 .products__item {
-    padding: 10px 20px;
+    padding: 15px 25px;
     border: 1px solid #fff;
     background: transparent;
     color: #fff;
     transition: background 0.3s, color 0.3s;
+    text-transform: uppercase;
 }
 
 .products__item--active,
@@ -79,7 +83,6 @@ body {
     color: #000;
 }
 
-/* Сетка для формы */
 .contact__form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -128,44 +131,37 @@ body {
 }
 
 .contact__button:hover {
-    background: #22d1ee; /* голубая заливка при ховере */
-    color: #000; /* тёмный текст */
+    background: #22d1ee;
+    color: #000;
     border-color: #22d1ee;
 }
 
-/* Мобильная версия */
-@media (max-width: 991px) {
-    .header__title {
-        font-size: 2rem;
-    }
-
+@media (max-width: 992px) {
     .products__list {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .contact__form {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto;
+        display: grid;
+        grid-template-areas:    "c1 c1 c1 c1 c2 c2 c2 c2"
+                                "fm fm fm fm fm fm fm sm"
+                                "fm fm fm fm fm fm fm sm";
     }
 
     .contact__input:nth-child(1) {
-        grid-column: 1;
-        grid-row: 1;
+        grid-area: c1;
     }
 
     .contact__input:nth-child(2) {
-        grid-column: 1;
-        grid-row: 2;
+        grid-area: c2;
     }
 
     .contact__textarea {
-        grid-column: 1;
-        grid-row: 3;
+        grid-area: fm;
     }
 
     .contact__button {
-        grid-column: 1;
-        grid-row: 4;
+        grid-area: sm;
     }
 
     .page__wrapper::after {
@@ -174,25 +170,66 @@ body {
     }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-    .about__text {
-        margin-bottom: 1rem;
-        max-width: 600px;
+@media (max-width: 540px) {
+    .header__logo {
+        width: 450px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .about__title,
+    .products__title,
+    .contact__title {
+        text-align: center;
+    }
+
+    .products__list {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .products__item:nth-child(4) {
+        order: 1;
+    }
+    .contact__form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:    "c1 c1 c1 "
+                                "c2 c2 c2 "
+                                "fm fm fm"
+                                ". sm . ";
+    }
+
+    .contact__input:nth-child(1) {
+        grid-area: c1;
+    }
+
+    .contact__input:nth-child(2) {
+        grid-area: c2;
+    }
+
+    .contact__textarea {
+        grid-area: fm;
+    }
+
+    .contact__button {
+        grid-area: sm;
     }
 
     .page__wrapper::after {
-        width: 250px;
-        height: 400px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .header__title {
-        font-size: 3.5rem;
+        width: 200px;
+        height: 300px;
     }
 
     .page__wrapper::after {
-        width: 350px;
-        height: 600px;
+        content: "";
+        background: url('../img/greg.png') no-repeat center bottom/contain;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 350px;
+        z-index: -1;
     }
 }
+
