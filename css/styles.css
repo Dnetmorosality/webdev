@@ -9,7 +9,7 @@ body {
     background-image: url('../img/background.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center; /* Центрируем фон */
+    background-position: center center;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     color: #fff;
@@ -211,10 +211,10 @@ body {
 
 @media (max-width: 540px) {
 
-    .body {
-        background-size: 100% 200%;
+    body {
+        background-size: auto 150%;
         background-position: center top;
-        height: 100vh;
+        height: 180vh;
     }
 
     .page__wrapper {
@@ -269,11 +269,6 @@ body {
 
     .contact__button {
         grid-area: sm;
-    }
-
-    .page__wrapper::after {
-        width: 200px;
-        height: 300px;
     }
 
     .page__wrapper::after {
